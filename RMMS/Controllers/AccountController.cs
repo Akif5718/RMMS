@@ -89,6 +89,52 @@ namespace RMMS.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("LogIn", "Account");
         }
+        public ActionResult ResetPassword()
+        {
+            var model = new ResetPasswordModel();
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult ResetPassword(ResetPasswordModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var result = ResetPasswordRequestRepo.GetMail(model.UserName);
+            if(result.HasError)
+            {
+                ViewBag.Error = result.Message;
+                return View(model);
+            }
+            ViewBag.Success = "Please, check your email for reset password";
+            return View(model);
+        }
+        public ActionResult ChangePassword(string id)
+        {
+            var model = new ChangePasswordModel();
+            if (ResetPasswordRequestRepo.isUrlValid(id))
+                return View(model);
+            else
+                return Content("Request is expired");
+        }
+        [HttpPost]
+        public ActionResult ChangePassword(ChangePasswordModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            string id = model.id;
+            var result = UserInfoRepo.ChangePassword(Request["id"].ToString(),model.NewPassword);
+            if (result.HasError)
+            {
+                ViewBag.Error = result.Message;
+                return View(model);
+            }
+            ViewBag.Success = "Your password has been changed successfully";
+            return View(model);
+        }
 
     }
 }

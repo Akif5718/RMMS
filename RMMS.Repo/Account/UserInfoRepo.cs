@@ -111,6 +111,44 @@ namespace RMMS.Repo.Account
             }
             return true;
         }
+        public Result<UserInfo> ChangePassword(string guid,string password)
+        {
+            var result = new Result<UserInfo>();
+            try
+            {
+                List<ResetPasswordRequest> resetPasswordRequestObj = DbContext.ResetPasswordRequests.Where(r => r.GUID.Trim().Equals(guid.Trim())).ToList();
+                if(resetPasswordRequestObj.Count() == 0)
+                {
+                    result.HasError = true;
+                    result.Message = "Request is expired";
+                    return result;
+                }
+                else if(resetPasswordRequestObj.Count() > 1)
+                {
+                    result.HasError = true;
+                    result.Message = "Something went wrong";
+                    return result;
+                }
+                ResetPasswordRequest oTmp = resetPasswordRequestObj[0];
+                var userInfoObj = DbContext.UserInfos.FirstOrDefault(u => u.ID == oTmp.UserID);
+                if(userInfoObj == null)
+                {
+                    result.HasError = true;
+                    result.Message = "Something went wrong";
+                    return result;
+                }
+                userInfoObj.Password = password;
+                DbContext.SaveChanges();
+                result.Data = userInfoObj;
+                
+
+            }catch(Exception ex)
+            {
+                result.HasError = true;
+                result.Message = ex.Message;
+            }
+            return result;
+        }
         public void DetachAllEntities()
         {
             var changedEntriesCopy = DbContext.ChangeTracker.Entries()

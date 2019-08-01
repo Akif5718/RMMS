@@ -44,6 +44,7 @@
     <Compile Include="Constants\EnumCollection.cs" />
     <Compile Include="Helper\ValidationHelper.cs" />
     <Compile Include="Objects\EnumDetail.cs" />
+    <Compile Include="Objects\ForgotPassword.cs" />
     <Compile Include="Objects\Result.cs" />
     <Compile Include="Objects\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -66,6 +66,10 @@
     <Compile Include="Migrations\201906221806471_userInfo_Add_Name.Designer.cs">
       <DependentUpon>201906221806471_userInfo_Add_Name.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908012131025_ResetPasswordRequest_Created.cs" />
+    <Compile Include="Migrations\201908012131025_ResetPasswordRequest_Created.Designer.cs">
+      <DependentUpon>201908012131025_ResetPasswordRequest_Created.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="RMMSDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -91,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906221806471_userInfo_Add_Name.resx">
       <DependentUpon>201906221806471_userInfo_Add_Name.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908012131025_ResetPasswordRequest_Created.resx">
+      <DependentUpon>201908012131025_ResetPasswordRequest_Created.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

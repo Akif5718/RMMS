@@ -42,8 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\ChangePasswordModel.cs" />
     <Compile Include="Account\LogInModel.cs" />
     <Compile Include="Account\RegistrationModel.cs" />
+    <Compile Include="Account\ResetPasswordModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

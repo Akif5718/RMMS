@@ -30,5 +30,15 @@ namespace RMMS.Framework.Base
                 return _userInfoRepo;
             }
         }
+        private static ResetPasswordRequestRepo _resetPasswordRequestRepo;
+        public static ResetPasswordRequestRepo ResetPasswordRequestRepo
+        {
+            get
+            {
+                if (_resetPasswordRequestRepo == null)
+                    _resetPasswordRequestRepo = new ResetPasswordRequestRepo();
+                return _resetPasswordRequestRepo;
+            }
+        }
     }
 }
