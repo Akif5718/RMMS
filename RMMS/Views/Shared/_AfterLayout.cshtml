@@ -1,0 +1,121 @@
+﻿@using RMMS.Framework.Util
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" ><span style="font-family:'CommercialScript BT'; font-size:24px; color:#d742f5">Rahim Color</span><span style="font-family:'CommercialScript BT'; font-size:24px; color:#58c6fc"> Sorter Mill</span></a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active menu" id="homeMenu">@Html.ActionLink("Manage Admins", "Dashboard", "Main")</li>
+                    <li class="menu" id="aboutMenu">@Html.ActionLink("Manage Employees", "Dashboard", "Main")</li>
+                    <li class="menu" id="contactMenu">@Html.ActionLink("Manage Customers", "Dashboard", "Main")</li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@HttpUtil.UserProfile.UserName <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink(" Profile", "LogOut", "Account", null, new { @class = "fa fa-user" })</li>
+                            <li>@Html.ActionLink(" Requests", "LogOut", "Account", null, new { @class = "fa fa-bell" })</li>
+                            <li>@Html.ActionLink(" Settings", "LogOut", "Account", null, new { @class = "fa fa-cog" })</li>
+                            <li class="divider"></li>
+                            <li>@Html.ActionLink(" Log Out", "LogOut", "Account", null, new { @class = "fa fa-sign-out" })</li>
+                           
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <br />
+                <li class="sidebar-brand">
+                    <a href="#">
+
+                        <img src="~/Content/Images/LogoTransparent.png" height="50" width="50" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Import</a>
+                </li>
+                <li>
+                    <a href="#">Sorting</a>
+                </li>
+                <li>
+                    <a href="#">Delivery</a>
+                </li>
+               
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><i class="fa fa-bars" style="font-size:24px"></i></a>
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        @*<footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>*@
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    @*<div class="container body-content">
+        
+        
+    </div>*@
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+
+        function myFunction() {
+            var x = document.getElementById("Demo");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+    </script>
+</body>
+</html>
+

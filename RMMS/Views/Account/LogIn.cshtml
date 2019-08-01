@@ -1,0 +1,90 @@
+﻿@model RMMS.Model.Account.LogInModel
+@{
+    ViewBag.Title = "LogIn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>@ViewBag.Title</h2>*@
+<br />
+<br />
+@using (Html.BeginForm("LogIn"))
+{
+    if (!string.IsNullOrEmpty(ViewBag.Error))
+    {
+        <div class="alert alert-dismissible alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Oh snap!</strong><br /> @ViewBag.Error
+        </div>
+    }
+    <div class="row">
+        <div class=" col-sm-3 col-md-4"></div>
+        <div class=" col-sm-6 col-md-4" align ="center">
+            
+            <div class="panel panel-default">
+                @*<div class="panel-heading">LogIn</div>*@
+                <div class="panel-body">
+
+                    <center>
+                        <img src="~/Content/Images/LogoTransparent.png" height="70" width="70" /><br />
+                        <span style="font-family:'CommercialScript BT'; font-size:24px; color:#d742f5">Rahim Color</span><span style="font-family:'CommercialScript BT'; font-size:24px; color:#58c6fc"> Sorter Mill</span>
+
+                    </center>
+                    <br />
+
+                    @*<span style="color:red">*</span> This fields are required<br/>*@
+
+                    
+                    <div class="form-group"  >
+                        @*@Html.LabelFor(m => m.UserName) &nbsp;<span style="color:red">*</span>*@
+                            <div class="input-group">
+                                <span class="input-group-addon" style="width: auto"><i class="fa fa-user" aria-hidden="true"></i></span>
+                               
+                                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Enter User Name or Email"})
+                                
+                            </div>
+                            @Html.ValidationMessageFor(m => m.UserName)
+                    </div>
+
+
+                        <div class="form-group">
+                            @*@Html.LabelFor(m => m.Password) &nbsp;<span style="color:red">*</span>*@
+                            <div class="input-group">
+                                <span class="input-group-addon" style="width: auto"><i class="fa fa-key" aria-hidden="true"></i></span>
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Enter Password" })
+
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Password)
+                        </div>
+
+                  
+                    <button type="submit" class="btn btn-info btn-lg btn-block" value="LogIn"> <span style="font-size:medium">Log In</span></button><br />
+                    <ul class="pull-left list-unstyled">
+                        <li>@Html.ActionLink("Sign Up", "Registration", "Account")</li>
+                    </ul>
+                    <ul class="pull-right list-unstyled">
+                        <li>@Html.ActionLink("Forgot Password?", "Registration", "Account")</li>
+                    </ul>
+
+
+                </div>
+
+                
+            </div>
+
+
+
+            
+        </div>
+        <div class=" col-sm-3 col-md-4"></div>
+    </div>
+}
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $(".menu").removeClass("active");
+            $("#LogInMenu").addClass("active");
+        });
+    </script>
+}
+
