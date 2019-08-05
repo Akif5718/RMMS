@@ -50,6 +50,7 @@
     <Compile Include="Account\ResetPasswordRequestRepo.cs" />
     <Compile Include="Account\UserInfoRepo.cs" />
     <Compile Include="Bases\BaseRepo.cs" />
+    <Compile Include="ManageProfile\UserRequestsRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

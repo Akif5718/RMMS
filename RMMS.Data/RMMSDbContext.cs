@@ -16,5 +16,6 @@ namespace RMMS.Data
         }
         public DbSet<UserInfo> UserInfos { get; set; }
         public DbSet<ResetPasswordRequest> ResetPasswordRequests { get; set; }
+        public DbSet<UserRequest> UserRequests { get; set; }
     }
 }

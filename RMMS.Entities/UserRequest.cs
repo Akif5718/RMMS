@@ -5,24 +5,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMMS.Model.Account
+namespace RMMS.Entities
 {
-    public class RegistrationModel
+    public partial class UserRequest
     {
-        [Display]
+        [Key]
+        public int ID { get; set; }
         [Required]
         public string UserName { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
-        public string Address { get; set; }
-        [Required]
         public string Password { get; set; }
         [Required]
-        [Compare("Password")]
-        public string CPassword { get; set; }
-        [Required]
-        [EmailAddress]
         public string Email { get; set; }
+        [Required]
+        public bool Status { get; set; }
+        [Required]
+        public DateTime Created_at { get; set; }
+     
+        public DateTime Approved_at { get; set; }
+        [Required]
+        public string Address { get; set; }
     }
 }

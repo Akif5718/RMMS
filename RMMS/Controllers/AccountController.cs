@@ -33,16 +33,19 @@ namespace RMMS.Controllers
             {
                 return View(model);
             }
-            var UserInfo = new UserInfo() {
+            UserRequest ur = new UserRequest() {
                 UserName = model.UserName,
                 Name = model.Name,
-                Email = model.Email,
-                Password = model.Password,
-                UserTypeID = (int)EnumCollection.UserTypeEnum.Customer
-
+                Address=model.Address,
+                Password=model.Password,
+                Email=model.Email
+                
+                
             };
-            var result = UserInfoRepo.Save(UserInfo);
-            if(result.HasError)
+            var result = UserRequestsRepo.SendRequest(ur);
+
+
+            if (result.HasError)
             {
                 ViewBag.Error = result.Message;
                 return View(model);

@@ -51,6 +51,8 @@ namespace RMMS.Repo.Account
                 objectToSave.Email = userInfo.Email;
                 objectToSave.Password = userInfo.Password;
                 objectToSave.UserTypeID = userInfo.UserTypeID;
+                objectToSave.Address = userInfo.Address;
+                objectToSave.IsActive = true;
 
                 if (!IsValid(objectToSave, result))
                 {

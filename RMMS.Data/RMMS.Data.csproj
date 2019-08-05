@@ -70,6 +70,22 @@
     <Compile Include="Migrations\201908012131025_ResetPasswordRequest_Created.Designer.cs">
       <DependentUpon>201908012131025_ResetPasswordRequest_Created.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908051856407_UserRequest_create.cs" />
+    <Compile Include="Migrations\201908051856407_UserRequest_create.Designer.cs">
+      <DependentUpon>201908051856407_UserRequest_create.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908051920492_Userinfo_col_add.cs" />
+    <Compile Include="Migrations\201908051920492_Userinfo_col_add.Designer.cs">
+      <DependentUpon>201908051920492_Userinfo_col_add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908052014531_Userrequsrcol_add.cs" />
+    <Compile Include="Migrations\201908052014531_Userrequsrcol_add.Designer.cs">
+      <DependentUpon>201908052014531_Userrequsrcol_add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908052033234_Userrequsrcoledit_add.cs" />
+    <Compile Include="Migrations\201908052033234_Userrequsrcoledit_add.Designer.cs">
+      <DependentUpon>201908052033234_Userrequsrcoledit_add.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="RMMSDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -98,6 +114,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908012131025_ResetPasswordRequest_Created.resx">
       <DependentUpon>201908012131025_ResetPasswordRequest_Created.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908051856407_UserRequest_create.resx">
+      <DependentUpon>201908051856407_UserRequest_create.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908051920492_Userinfo_col_add.resx">
+      <DependentUpon>201908051920492_Userinfo_col_add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908052014531_Userrequsrcol_add.resx">
+      <DependentUpon>201908052014531_Userrequsrcol_add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908052033234_Userrequsrcoledit_add.resx">
+      <DependentUpon>201908052033234_Userrequsrcoledit_add.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

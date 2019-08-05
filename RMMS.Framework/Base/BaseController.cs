@@ -1,5 +1,6 @@
 ﻿using RMMS.Data;
 using RMMS.Repo.Account;
+using RMMS.Repo.ManageProfile;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,17 @@ namespace RMMS.Framework.Base
                 if (_resetPasswordRequestRepo == null)
                     _resetPasswordRequestRepo = new ResetPasswordRequestRepo();
                 return _resetPasswordRequestRepo;
+            }
+        }
+
+        private static UserRequestsRepo _userRequestRepo;
+        public static UserRequestsRepo UserRequestsRepo
+        {
+            get
+            {
+                if (_userRequestRepo == null)
+                    _userRequestRepo = new UserRequestsRepo();
+                return _userRequestRepo;
             }
         }
     }

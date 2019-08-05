@@ -64,55 +64,66 @@
         <div class="col-sm-8 col-md-6">
             
             <div class="panel panel-default well bs-component">
-                    <div class="panel-body">
-                        <legend>Registration</legend>
-                        <hr style="border: 0.5px solid #b0aa8d" />
-                        <div class="form-group">
-                            @*<label class="col-lg-2 control-label" for="inputEmail">Email</label>*@
-                            @Html.LabelFor(m => m.UserName, "User Name:", new { @class = "col-xs-4 col-sm-4 col-md-4 col-lg-4 control-label" })<span style="color:red">*</span>
-                            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                                @*<input class="form-control" id="inputEmail" type="text" placeholder="Email">*@
-                                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Enter Full Name" })
-                                @Html.ValidationMessageFor(m => m.UserName)
-                            </div>
+                <div class="panel-body">
+                    <legend>Registration</legend>
+                    <hr style="border: 0.5px solid #b0aa8d" />
+                    <div class="form-group">
+                        @*<label class="col-lg-2 control-label" for="inputEmail">Email</label>*@
+                        @Html.LabelFor(m => m.UserName, "User Name:", new { @class = "col-xs-4 col-sm-4 col-md-4 col-lg-4 control-label" })<span style="color:red">*</span>
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                            @*<input class="form-control" id="inputEmail" type="text" placeholder="Email">*@
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Enter Full Name" })
+                            @Html.ValidationMessageFor(m => m.UserName)
                         </div>
-                        <div class="form-group">
-                            @*<label class="col-lg-2 control-label" for="inputEmail">Email</label>*@
-                            @Html.LabelFor(m => m.Name, "Full Name:", new { @class = "col-xs-4 col-sm-4 col-md-4 col-lg-4 control-label" })<span style="color:red">*</span>
-                            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                                @*<input class="form-control" id="inputEmail" type="text" placeholder="Email">*@
-                                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Enter Full Name" })
-                                @Html.ValidationMessageFor(m => m.Name)
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        @*<label class="col-lg-2 control-label" for="inputEmail">Email</label>*@
+                        @Html.LabelFor(m => m.Name, "Full Name:", new { @class = "col-xs-4 col-sm-4 col-md-4 col-lg-4 control-label" })<span style="color:red">*</span>
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                            @*<input class="form-control" id="inputEmail" type="text" placeholder="Email">*@
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Enter Full Name" })
+                            @Html.ValidationMessageFor(m => m.Name)
                         </div>
-                        <div class="form-group">
-                            @*<label class="col-lg-2 control-label" for="inputEmail">Email</label>*@
-                            @Html.LabelFor(m => m.Email, "Email:", new { @class = "col-xs-4 col-sm-4 col-md-4 col-lg-4 control-label" })<span style="color:red">*</span>
-                            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                                @*<input class="form-control" id="inputEmail" type="text" placeholder="Email">*@
-                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Enter Email Address" })
-                                @Html.ValidationMessageFor(m => m.Email)
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        @*<label class="col-lg-2 control-label" for="inputEmail">Email</label>*@
+                        @Html.LabelFor(m => m.Email, "Email:", new { @class = "col-xs-4 col-sm-4 col-md-4 col-lg-4 control-label" })<span style="color:red">*</span>
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                            @*<input class="form-control" id="inputEmail" type="text" placeholder="Email">*@
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Enter Email Address" })
+                            @Html.ValidationMessageFor(m => m.Email)
                         </div>
-                        <div class="form-group">
-                            @*<label class="col-lg-2 control-label" for="inputEmail">Email</label>*@
-                            @Html.LabelFor(m => m.Password, "Password:", new { @class = "col-xs-4 col-sm-4 col-md-4 col-lg-4 control-label" })<span style="color:red">*</span>
-                            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                                @*<input class="form-control" id="inputEmail" type="text" placeholder="Email">*@
-                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Enter Password" })
-                                @Html.ValidationMessageFor(m => m.Password)
-                            </div>
+                    </div>
+
+                    <div class="form-group">
+                        @*<label class="col-lg-2 control-label" for="inputEmail">Email</label>*@
+                        @Html.LabelFor(m => m.Address, "Address:", new { @class = "col-xs-4 col-sm-4 col-md-4 col-lg-4 control-label" })<span style="color:red">*</span>
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                            @*<input class="form-control" id="inputEmail" type="text" placeholder="Email">*@
+                            @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @placeholder = "Enter Address" })
+                            @Html.ValidationMessageFor(m => m.Address)
                         </div>
-                        <div class="form-group">
-                            @*<label class="col-lg-2 control-label" for="inputEmail">Email</label>*@
-                            @Html.LabelFor(m => m.CPassword, "Confirm Password:", new { @class = "col-xs-4 col-sm-4 col-md-4 col-lg-4 control-label" })<span style="color:red">*</span>
-                            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                                @*<input class="form-control" id="inputEmail" type="text" placeholder="Email">*@
-                                @Html.PasswordFor(m => m.CPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
-                                @Html.ValidationMessageFor(m => m.CPassword)
-                            </div>
+                    </div>
+
+                    <div class="form-group">
+                        @*<label class="col-lg-2 control-label" for="inputEmail">Email</label>*@
+                        @Html.LabelFor(m => m.Password, "Password:", new { @class = "col-xs-4 col-sm-4 col-md-4 col-lg-4 control-label" })<span style="color:red">*</span>
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                            @*<input class="form-control" id="inputEmail" type="text" placeholder="Email">*@
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Enter Password" })
+                            @Html.ValidationMessageFor(m => m.Password)
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block" value="Save">Save</button><br />
+                    </div>
+                    <div class="form-group">
+                        @*<label class="col-lg-2 control-label" for="inputEmail">Email</label>*@
+                        @Html.LabelFor(m => m.CPassword, "Confirm Password:", new { @class = "col-xs-4 col-sm-4 col-md-4 col-lg-4 control-label" })<span style="color:red">*</span>
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                            @*<input class="form-control" id="inputEmail" type="text" placeholder="Email">*@
+                            @Html.PasswordFor(m => m.CPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
+                            @Html.ValidationMessageFor(m => m.CPassword)
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block" value="Save">Save</button><br />
                 </div>
             </div>
         </div>
