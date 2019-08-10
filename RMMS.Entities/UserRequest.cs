@@ -20,11 +20,7 @@ namespace RMMS.Entities
         [Required]
         public string Email { get; set; }
         [Required]
-        public bool Status { get; set; }
-        [Required]
         public DateTime Created_at { get; set; }
-     
-        public DateTime Approved_at { get; set; }
         [Required]
         public string Address { get; set; }
     }

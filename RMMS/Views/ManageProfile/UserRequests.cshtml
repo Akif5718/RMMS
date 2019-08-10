@@ -1,51 +1,141 @@
-﻿
+﻿@model List<RMMS.Model.ManageProfile.UserRequestModel>
 @{
     ViewBag.Title = "UserRequests";
     Layout = "~/Views/Shared/_AfterLayout.cshtml";
 }
 
-   
+@if (!string.IsNullOrEmpty(ViewBag.Success))
+{
+    <div class="alert alert-dismissible alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        @ViewBag.Success
+    </div>
+}
 
 
 <h2>UserRequests</h2>
 
-        
 
-            <table class="table table-bordered table-hover table-striped sortable">
 
-                <thead>
+<table class="table table-bordered table-hover table-striped sortable">
 
-                    <tr>
+    <thead>
 
-                        <th>User Name</th>
-                        <th>Full Name</th>
-                        <th>Email</th>
-                        <th>Action</th>
+        <tr>
+            <th>SL#</th>
 
-                    </tr>
+            <th>User Name</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Status</th>
+            <th>UserType</th>
+            <th>Action</th>
 
-                </thead>
+        </tr>
 
-                <tbody>
+    </thead>
 
-                    <tr>
+    <tbody>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <tr>
 
-                        <td>1</td>
 
-                        <td>Haresh</td>
+                <td>@(i + 1)</td>
+                <td>@Model[i].UserName</td>
 
-                        <td>haresh@gmail.com</td>
-                        <td></td>
+                <td>@Model[i].FullName</td>
 
-                    </tr>
+                <td>@Model[i].Email</td>
+                <td>@Model[i].Address</td>
+                <td>@Model[i].Status</td>
+                <td>
+                    @Html.DropDownListFor(d=>d[i].selectedList, new List<SelectListItem> {
+                   new SelectListItem {Text = "Admin",Value = "1"},
+                   new SelectListItem {Text = "Customer",Value = "2"},
+                   new SelectListItem {Text = "Employee",Value = "4"}
 
-                   
+                   },"---Select UserType---",new { @id = "ddl"+Model[i].ID , @class = "form-control"})
+                </td>
+                <td>
+                    @*<button type="submit" class="btn btn-info" value="ChangeStatus"> <i class="fa fa-exchange fa-lg">&nbsp;</i>Change Status</button>*@
 
-                </tbody>
+                    <a href="#" class="btn btn-info" onclick="changeStatus(@Model[i].ID)"><i class="fa fa-exchange fa-lg">&nbsp;</i>Change Status</a>
+                    <a href="#" class="btn btn-danger" onclick="confirmDelete(@Model[i].ID)"><i class="fa fa-times fa-lg">&nbsp;</i>Delete</a>
+                </td>
 
-            </table>
+            </tr>
+        }
 
-        
+
+
+    </tbody>
+
+</table>
+<input type="hidden" id="hiddenUserName" />
+
+
+@section scripts
+{
+    <script type="text/javascript">
+        var confirmDelete = function (id) {
+            $('#hiddenUserName').val(id);
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            type: "POST",
+                            url: "/ManageProfile/DeleteRequest",
+                            data: { id: id },
+                            success: function (result) {
+                            }
+                        })
+
+                    } else {
+                        swal("Your record is safe!");
+                    }
+                });
+        }
+        var changeStatus = function (id) {
+            var type = $('#ddl' + id).val();
+            swal({
+                title: "Are you sure?",
+                text: "Once added you can not able to see it from this page",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            type: "POST",
+                            url: "/ManageProfile/UserRequests",
+                            data: { id: id, type },
+                            success: function (result) {
+                            }
+                        })
+
+                    } else {
+                        swal("Change has been reverted");
+                    }
+                });
+        }
+
+
+    </script>
+}
+
+
+
+
+
 
 
 

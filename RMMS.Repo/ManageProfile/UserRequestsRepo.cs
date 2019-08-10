@@ -29,9 +29,7 @@ namespace RMMS.Repo.ManageProfile
                 objectToSave.Password = userRequest.Password;
                
                 objectToSave.Address = userRequest.Address;
-                objectToSave.Status = false;
                 objectToSave.Created_at = DateTime.Now;
-                objectToSave.Approved_at = DateTime.Parse("1-jan-1900");
 
 
                 if (!IsValid(objectToSave, result))
@@ -49,6 +47,45 @@ namespace RMMS.Repo.ManageProfile
             }
             return result;
         }
+        public Result<List<UserRequest>> LoadRequests()
+        {
+            Result<List<UserRequest>> result = new Result<List<UserRequest>>();
+            try
+            {
+                var objectToSave = DbContext.UserRequests.AsNoTracking().OrderByDescending(o=>o.Created_at).ToList();
+                result.Data = objectToSave;
+            }
+            catch (Exception e)
+            {
+                result.HasError = true;
+                result.Message = e.Message;
+            }
+            return result;
+        }
+        public Result<UserRequest> deleteRequest(int id)
+        {
+            var result = new Result<UserRequest>();
+            try
+            {
+                var objToDel = DbContext.UserRequests.FirstOrDefault(ur => ur.ID == id);
+                if(objToDel == null)
+                {
+                    result.HasError = true;
+                    result.Message = "User is not found";
+                    return result;
+                }
+                DbContext.UserRequests.Remove(objToDel);
+                DbContext.SaveChanges();
+                result.Data = objToDel;
+            }catch(Exception ex)
+            {
+                result.HasError = true;
+                result.Message = ex.Message;
+            }
+            return result;
+        }
+
+
 
         private bool IsValid(UserRequest obj, Result<UserRequest> result)
         {
@@ -91,6 +128,18 @@ namespace RMMS.Repo.ManageProfile
                 return false;
             }
             if (DbContext.UserInfos.Any(u => u.Email == obj.Email && u.ID != obj.ID))
+            {
+                result.HasError = true;
+                result.Message = "Email Exists";
+                return false;
+            }
+            if (DbContext.UserRequests.Any(u => u.UserName == obj.UserName && u.ID != obj.ID))
+            {
+                result.HasError = true;
+                result.Message = "UserName Exists";
+                return false;
+            }
+            if (DbContext.UserRequests.Any(u => u.Email == obj.Email && u.ID != obj.ID))
             {
                 result.HasError = true;
                 result.Message = "Email Exists";

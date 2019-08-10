@@ -12,16 +12,14 @@
 
 
     <link rel="stylesheet" href="https://drvic10k.github.io/bootstrap-sortable/Contents/bootstrap-sortable.css" />
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>*@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.js"></script>
-
     <script src="https://drvic10k.github.io/bootstrap-sortable/Scripts/bootstrap-sortable.js"></script>
-
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -35,7 +33,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#" ><span style="font-family:'CommercialScript BT'; font-size:24px; color:#d742f5">Rahim Color</span><span style="font-family:'CommercialScript BT'; font-size:24px; color:#58c6fc"> Sorter Mill</span></a>
+                <a class="navbar-brand" href="#"><span style="font-family:'CommercialScript BT'; font-size:24px; color:#d742f5">Rahim Color</span><span style="font-family:'CommercialScript BT'; font-size:24px; color:#58c6fc"> Sorter Mill</span></a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -50,11 +48,11 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@HttpUtil.UserProfile.UserName <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li>@Html.ActionLink(" Profile", "LogOut", "Account", null, new { @class = "fa fa-user" })</li>
-                            <li>@Html.ActionLink(" Requests", "LogOut", "Account", null, new { @class = "fa fa-bell" })</li>
+                            <li>@Html.ActionLink(" Requests", "UserRequests", "ManageProfile", null, new { @class = "fa fa-bell" })</li>
                             <li>@Html.ActionLink(" Settings", "LogOut", "Account", null, new { @class = "fa fa-cog" })</li>
                             <li class="divider"></li>
                             <li>@Html.ActionLink(" Log Out", "LogOut", "Account", null, new { @class = "fa fa-sign-out" })</li>
-                           
+
                         </ul>
                     </li>
                 </ul>
@@ -85,7 +83,7 @@
                 <li>
                     <a href="#">Delivery</a>
                 </li>
-               
+
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -102,20 +100,20 @@
         </div>
         <hr />
         @*<footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>*@
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>*@
         <!-- /#page-content-wrapper -->
 
     </div>
     @*<div class="container body-content">
-        
-        
-    </div>*@
+
+
+        </div>*@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+
     <script>
         $("#menu-toggle").click(function (e) {
             e.preventDefault();
@@ -131,6 +129,7 @@
             }
         }
     </script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>
 

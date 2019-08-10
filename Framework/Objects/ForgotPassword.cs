@@ -41,5 +41,42 @@ namespace Framework.Objects
             smtpClient.EnableSsl = true;
             smtpClient.Send(mailMessage);
         }
+        public static void ConfirmationMail(string ToEmail, string FullName, string Message, string UserName, string Password)
+        {
+            // MailMessage class is present is System.Net.Mail namespace
+            MailMessage mailMessage = new MailMessage("aksk5718@gmail.com", ToEmail);
+
+
+            // StringBuilder class is present in System.Text namespace
+            StringBuilder sbEmailBody = new StringBuilder();
+            sbEmailBody.Append("Dear " + FullName + ",<br/><br/>");
+            sbEmailBody.Append(Message);
+            sbEmailBody.Append("<br/><br/>");
+            sbEmailBody.Append("Your UserName: "+UserName);
+            sbEmailBody.Append("<br/>");
+            sbEmailBody.Append("Your Password: "+Password);
+            sbEmailBody.Append("<br/>");
+            sbEmailBody.Append("http://localhost:53876/Account/LogIn");
+            sbEmailBody.Append("<br/><br/>");
+            sbEmailBody.Append("Regards");
+            sbEmailBody.Append("<br/>");
+            sbEmailBody.Append("<b>Rahim Color Sorter Mill</b>");
+
+
+            mailMessage.IsBodyHtml = true;
+
+            mailMessage.Body = sbEmailBody.ToString();
+            mailMessage.Subject = "Account Confirmation";
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
+
+            smtpClient.Credentials = new System.Net.NetworkCredential()
+            {
+                UserName = "aksk5718@gmail.com",
+                Password = "@KIFmessi105718"
+            };
+
+            smtpClient.EnableSsl = true;
+            smtpClient.Send(mailMessage);
+        }
     }
 }

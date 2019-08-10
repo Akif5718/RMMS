@@ -31,6 +31,7 @@ namespace RMMS.Controllers
 
             return View();
         }
+        [Authorize]
         public ActionResult UnAuthorized()
         {
             //ViewBag.Message = "You";

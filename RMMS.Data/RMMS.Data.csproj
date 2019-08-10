@@ -86,6 +86,18 @@
     <Compile Include="Migrations\201908052033234_Userrequsrcoledit_add.Designer.cs">
       <DependentUpon>201908052033234_Userrequsrcoledit_add.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908080313565_userinfo_userrequest_col-edit.cs" />
+    <Compile Include="Migrations\201908080313565_userinfo_userrequest_col-edit.Designer.cs">
+      <DependentUpon>201908080313565_userinfo_userrequest_col-edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908080317335_userinfo_usercodeType_change.cs" />
+    <Compile Include="Migrations\201908080317335_userinfo_usercodeType_change.Designer.cs">
+      <DependentUpon>201908080317335_userinfo_usercodeType_change.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908100126042_remove_statusCol_UserRequest.cs" />
+    <Compile Include="Migrations\201908100126042_remove_statusCol_UserRequest.Designer.cs">
+      <DependentUpon>201908100126042_remove_statusCol_UserRequest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="RMMSDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -126,6 +138,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908052033234_Userrequsrcoledit_add.resx">
       <DependentUpon>201908052033234_Userrequsrcoledit_add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908080313565_userinfo_userrequest_col-edit.resx">
+      <DependentUpon>201908080313565_userinfo_userrequest_col-edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908080317335_userinfo_usercodeType_change.resx">
+      <DependentUpon>201908080317335_userinfo_usercodeType_change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908100126042_remove_statusCol_UserRequest.resx">
+      <DependentUpon>201908100126042_remove_statusCol_UserRequest.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

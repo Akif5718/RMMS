@@ -50,7 +50,8 @@ namespace RMMS.Controllers
                 ViewBag.Error = result.Message;
                 return View(model);
             }
-            return RedirectToAction("Index","Home");
+            ViewBag.Success = "Your request has been sent for varification";
+            return View(model);
         }
 
 
@@ -58,7 +59,7 @@ namespace RMMS.Controllers
         {
             if (User.Identity.IsAuthenticated && HttpUtil.UserProfile != null)
             {
-                return RedirectToAction("About", "Home");
+                return RedirectToAction("Dashboard", "Main");
             }
             var model = new LogInModel();
             return View(model);

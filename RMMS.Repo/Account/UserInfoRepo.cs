@@ -8,6 +8,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Framework.Constants;
 
 namespace RMMS.Repo.Account
 {
@@ -53,6 +54,28 @@ namespace RMMS.Repo.Account
                 objectToSave.UserTypeID = userInfo.UserTypeID;
                 objectToSave.Address = userInfo.Address;
                 objectToSave.IsActive = true;
+                objectToSave.Created_at = DateTime.Now;
+                try
+                {
+                    var UserCode = DbContext.UserInfos.Where(u => u.UserTypeID == userInfo.UserTypeID).Max(u => u.UserCode);
+                    objectToSave.UserCode = UserCode + 1;
+                }catch(Exception ex)
+                {
+                    if(userInfo.UserTypeID == (int)EnumCollection.UserTypeEnum.Admin)
+                    {
+                        objectToSave.UserCode = 1001;
+                    }
+                    else if (userInfo.UserTypeID == (int)EnumCollection.UserTypeEnum.Employee)
+                    {
+                        objectToSave.UserCode = 2001;
+                    }
+                    else if (userInfo.UserTypeID == (int)EnumCollection.UserTypeEnum.Customer)
+                    {
+                        objectToSave.UserCode = 12001;
+                    }
+                }
+                
+
 
                 if (!IsValid(objectToSave, result))
                 {

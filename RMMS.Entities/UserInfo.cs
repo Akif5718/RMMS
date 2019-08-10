@@ -1,4 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace RMMS.Entities
 {
@@ -7,7 +12,7 @@ namespace RMMS.Entities
         [Key]
         public int ID { get; set; }
         [Required]
-        public string UserCode { get; set; }
+        public int UserCode { get; set; }
         [Required]
         public string UserName { get; set; }
         [Required]
@@ -22,5 +27,7 @@ namespace RMMS.Entities
         public string Address { get; set; }
         [Required]
         public bool IsActive { get; set; }
+        [Required]
+        public DateTime Created_at { get; set; }
     }
 }
