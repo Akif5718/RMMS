@@ -38,9 +38,9 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active menu" id="homeMenu">@Html.ActionLink("Manage Admins", "Dashboard", "Main")</li>
-                    <li class="menu" id="aboutMenu">@Html.ActionLink("Manage Employees", "Dashboard", "Main")</li>
-                    <li class="menu" id="contactMenu">@Html.ActionLink("Manage Customers", "Dashboard", "Main")</li>
+                    <li class="active navMenu" id="manageAdmins">@Html.ActionLink("Manage Admins", "Dashboard", "Main")</li>
+                    <li class="navMenu" id="manageEmployees">@Html.ActionLink("Manage Employees", "Employee", "ManageUser")</li>
+                    <li class="navMenu" id="manageCustomers">@Html.ActionLink("Manage Customers", "Customer", "ManageUser")</li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
@@ -113,7 +113,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/bootstrap")
-
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script>
         $("#menu-toggle").click(function (e) {
             e.preventDefault();

@@ -42,8 +42,6 @@ namespace RMMS.Controllers
                 
             }
             
-
-            
             return View(model);
         }
         [HttpPost]
@@ -72,7 +70,7 @@ namespace RMMS.Controllers
                         ForgotPassword.ConfirmationMail(userRequest.Email, userRequest.Name, "Your account has been created Successfully. Please go to the following link to continue.", userRequest.UserName, userRequest.Password);
                     }).Start();
                     
-                    //ViewBag.Success = "A confirmation mail has been sent";
+                    //TempData["ConfirmationMsg"] = "A confirmation mail has been sent";
                 }
                 catch(Exception ex)
                 {

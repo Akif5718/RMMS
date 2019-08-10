@@ -51,6 +51,8 @@
     <Compile Include="Account\UserInfoRepo.cs" />
     <Compile Include="Bases\BaseRepo.cs" />
     <Compile Include="ManageProfile\UserRequestsRepo.cs" />
+    <Compile Include="ManageUser\CustomerInfoRepo.cs" />
+    <Compile Include="ManageUser\EmployeeInfoRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -47,7 +47,10 @@
     <Compile Include="Account\RegistrationModel.cs" />
     <Compile Include="Account\ResetPasswordModel.cs" />
     <Compile Include="ManageProfile\UserRequestModel.cs" />
+    <Compile Include="ManageUser\CustomerInfoModel.cs" />
+    <Compile Include="ManageUser\EmployeeInfoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

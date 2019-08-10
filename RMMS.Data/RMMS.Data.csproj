@@ -98,6 +98,10 @@
     <Compile Include="Migrations\201908100126042_remove_statusCol_UserRequest.Designer.cs">
       <DependentUpon>201908100126042_remove_statusCol_UserRequest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908102329425_Create_Admin_Employee_customer_RiceType_ExtraType_ExtraBalanceDetail.cs" />
+    <Compile Include="Migrations\201908102329425_Create_Admin_Employee_customer_RiceType_ExtraType_ExtraBalanceDetail.Designer.cs">
+      <DependentUpon>201908102329425_Create_Admin_Employee_customer_RiceType_ExtraType_ExtraBalanceDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="RMMSDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -147,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908100126042_remove_statusCol_UserRequest.resx">
       <DependentUpon>201908100126042_remove_statusCol_UserRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908102329425_Create_Admin_Employee_customer_RiceType_ExtraType_ExtraBalanceDetail.resx">
+      <DependentUpon>201908102329425_Create_Admin_Employee_customer_RiceType_ExtraType_ExtraBalanceDetail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -19,7 +19,7 @@ namespace RMMS.Repo.Account
             var result = new Result<UserInfo>();
             try
             {
-                var objToSave = DbContext.UserInfos.FirstOrDefault(u=>(u.Email == emailOrUserName || u.UserName == emailOrUserName) && u.Password == password);
+                var objToSave = DbContext.UserInfos.FirstOrDefault(u=>(u.Email == emailOrUserName || u.UserName == emailOrUserName) && u.Password == password && u.IsActive == true);
                 if(objToSave == null)
                 {
                     result.HasError = true;

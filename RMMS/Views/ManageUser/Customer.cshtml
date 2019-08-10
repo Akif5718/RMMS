@@ -1,0 +1,342 @@
+﻿@model List<RMMS.Model.ManageUser.CustomerInfoModel>
+@{
+    ViewBag.Title = "Customer";
+    Layout = "~/Views/Shared/_AfterLayout.cshtml";
+}
+
+<h2>Customers</h2>
+@if (!string.IsNullOrEmpty(ViewBag.Success))
+{
+    <div class="alert alert-dismissible alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        @ViewBag.Success
+    </div>
+}
+else if (!string.IsNullOrEmpty(ViewBag.Error))
+{
+    <div class="alert alert-dismissible alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Oh snap!</strong><br /> @ViewBag.Error
+    </div>
+}
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#home" data-toggle="tab" aria-expanded="true"><i class="fa fa-circle" style="color:#15d42f"></i>&nbsp;&nbsp;Active</a></li>
+    <li class=""><a href="#profile" data-toggle="tab" aria-expanded="false"><i class="fa fa-trash fa-lg" aria-hidden="true" style="color:red"></i>&nbsp;&nbsp;Trash</a></li>
+    @*<li class="disabled"><a>Disabled</a></li>
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                Dropdown <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="#dropdown1" data-toggle="tab">Action</a></li>
+                <li class="divider"></li>
+                <li><a href="#dropdown2" data-toggle="tab">Another action</a></li>
+            </ul>
+        </li>*@
+</ul>
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade active in" id="home">
+        <br />
+        <label for="lblSearchActive"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;Search:</label>
+        @Html.TextBox("SearchActive", null, new { @class = "form-control" ,@id= "SearchActive", @placeholder = "Type to search" })
+        <br />
+        <table class="table table-bordered table-hover table-striped sortable">
+
+            <thead>
+
+                <tr>
+                    <th>SL#</th>
+
+                    <th>User Code</th>
+                    <th>User Name</th>
+                    <th>Full Name</th>
+                    <th>Address</th>
+                    <th>Email</th>
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="DataSearchingActive">
+                @{ int activeCount = 0; }
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    if (Model[i].IsActive)
+                    {
+                        <tr>
+
+
+                            <td>@(++activeCount)</td>
+                            <td>@Model[i].UserCode</td>
+
+                            <td>@Model[i].UserName</td>
+
+                            <td>@Model[i].Name</td>
+                            <td>@Model[i].Address</td>
+                            <td>@Model[i].Email</td>
+                            <td>
+                                @*<button type="submit" class="btn btn-info" value="ChangeStatus"> <i class="fa fa-exchange fa-lg">&nbsp;</i>Change Status</button>*@
+
+                                <a href="#" class="btn btn-info" onclick="changeStatus(@Model[i].ID)"><i class="fa fa-edit fa-lg">&nbsp;</i>Edit</a>
+                                <a href="#" class="btn btn-danger" onclick="Delete(@Model[i].ID)"><i class="fa fa-trash fa-lg">&nbsp;</i>Delete</a>
+                            </td>
+
+                        </tr>
+                    }
+                }
+
+
+
+            </tbody>
+
+        </table>
+    </div>
+    <div class="tab-pane fade" id="profile">
+        <br />
+        <label for="lblSearchTrash"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;Search:</label>
+        @Html.TextBox("SearchTrash", null, new { @class = "form-control", @id = "SearchTrash", @placeholder = "Type to search" })
+        </br/>
+        <table class="table table-bordered table-hover table-striped sortable">
+
+            <thead>
+
+                <tr>
+                    <th>SL#</th>
+
+                    <th>User Code</th>
+                    <th>User Name</th>
+                    <th>Full Name</th>
+                    <th>Address</th>
+                    <th>Email</th>
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="DataSearchingTrash">
+                @{ int trashCount = 0;}
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    if (!Model[i].IsActive)
+                    {
+                        <tr>
+
+
+                            <td>@(++trashCount)</td>
+                            <td>@Model[i].UserCode</td>
+
+                            <td>@Model[i].UserName</td>
+
+                            <td>@Model[i].Name</td>
+                            <td>@Model[i].Address</td>
+                            <td>@Model[i].Email</td>
+                            <td>
+                                @*<button type="submit" class="btn btn-info" value="ChangeStatus"> <i class="fa fa-exchange fa-lg">&nbsp;</i>Change Status</button>*@
+
+                                <a href="#" class="btn btn-info" onclick="Revert(@Model[i].ID)"><i class="fa fa-undo fa-lg">&nbsp;</i>Revert</a>
+                                <a href="#" class="btn btn-danger" onclick="DeleteUser(@Model[i].ID)"><i class="fa fa-times fa-lg">&nbsp;</i>Delete</a>
+                            </td>
+
+                        </tr>
+                    }
+                }
+
+
+
+            </tbody>
+
+        </table>
+    </div>
+    @*<div class="tab-pane fade" id="dropdown1">
+            <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
+        </div>
+        <div class="tab-pane fade" id="dropdown2">
+            <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.</p>
+        </div>*@
+</div>
+
+@section scripts
+{
+    @if(!string.IsNullOrEmpty(ViewBag.Success) || !string.IsNullOrEmpty(ViewBag.Error))
+    {
+        <script>
+            setTimeout(function () {
+                $('.alert').remove();
+            }, 2000);
+        </script>
+    }
+    <script type="text/javascript">
+        var Delete = function (id) {
+            swal({
+                title: "Are you sure?",
+                text: "It will go into trash",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            type: "POST",
+                            url: "/ManageUser/DeleteCustomer",
+                            data: { id: id },
+                            success: function (result) {
+                            }
+                        })
+
+                    } else {
+                        swal("Your record is safe!");
+                    }
+                });
+        }
+        var Revert = function (id) {
+            swal({
+                title: "Are you sure?",
+                text: "This user will be activated",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            type: "POST",
+                            url: "/ManageUser/RevertCustomer",
+                            data: { id: id },
+                            success: function (result) {
+                            }
+                        })
+
+                    } else {
+                        swal("Your record is safe!");
+                    }
+                });
+        }
+        var DeleteUser = function (id) {
+            swal({
+                title: "Are you sure?",
+                text: "This user will be deleted permanently!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            type: "POST",
+                            url: "/ManageUser/DeleteCustomerPermanently",
+                            data: { id: id },
+                            success: function (result) {
+                            }
+                        })
+
+                    } else {
+                        swal("Your record is safe!");
+                    }
+                });
+        }
+                    //var changeStatus = function (id) {
+                    //    var type = $('#ddl' + id).val();
+                    //    swal({
+                    //        title: "Are you sure?",
+                    //        text: "Once added you can not able to see it from this page",
+                    //        icon: "warning",
+                    //        buttons: true,
+                    //        dangerMode: true,
+                    //    })
+                    //        .then((willDelete) => {
+                    //            if (willDelete) {
+                    //                $.ajax({
+                    //                    type: "POST",
+                    //                    url: "/ManageProfile/UserRequests",
+                    //                    data: { id: id, type },
+                    //                    success: function (result) {
+                    //                    }
+                    //                })
+
+                    //            } else {
+                    //                swal("Change has been reverted");
+                    //            }
+                    //        });
+                    //}
+        $(document).ready(function () {
+            $("#SearchActive").keyup(function () {
+                var SearchValue = $("#SearchActive").val();
+                var SetData = $("#DataSearchingActive");
+                SetData.html("");
+                $.ajax({
+                    type: "post",
+                    url: "/ManageUser/GetSearchingDataCustomerActive?SearchValue=" + SearchValue,
+                    contentType: "html",
+                    success: function (result) {
+                        if (result.length == 0) {
+                            SetData.append('<tr align="center" style="color:red"><td colspan="7">No Match Data</td></tr>')
+                        }
+                        else {
+                            var $counter = 0;
+                            $.each(result, function (index, value) {
+                                var Data = "<tr>" +
+                                    "<td>" + ++$counter + "</td>" +
+                                    "<td>" + value.UserCode + "</td>" +
+                                    "<td>" + value.UserName + "</td>" +
+                                    "<td>" + value.Name + "</td>" +
+                                    "<td>" + value.Address + "</td>" +
+                                    "<td>" + value.Email + "</td>" +
+                                    "<td>" + "<a href='#' class='btn btn-info' onclick='changeStatus("+value.ID+")'><i class='fa fa-edit fa-lg'>&nbsp;</i>Edit</a>&nbsp;"+
+                                    "<a href='#' class='btn btn-danger' onclick='Delete("+value.ID+")'><i class='fa fa-trash fa-lg'>&nbsp;</i>Delete</a>" +
+                                    "</td>" +
+                                    "</tr>";
+
+                      
+                                SetData.append(Data);
+
+                            });
+                        }
+                    }
+                });
+            });
+            $("#SearchTrash").keyup(function () {
+                var SearchValue = $("#SearchTrash").val();
+                var SetData = $("#DataSearchingTrash");
+                SetData.html("");
+                $.ajax({
+                    type: "post",
+                    url: "/ManageUser/GetSearchingDataCustomerTrash?SearchValue=" + SearchValue,
+                    contentType: "html",
+                    success: function (result) {
+                        if (result.length == 0) {
+                            SetData.append('<tr align="center" style="color:red"><td colspan="7">No Match Data</td></tr>')
+                        }
+                        else {
+                            var $counter = 0;
+                            $.each(result, function (index, value) {
+                                var Data = "<tr>" +
+                                    "<td>" + ++$counter + "</td>" +
+                                    "<td>" + value.UserCode + "</td>" +
+                                    "<td>" + value.UserName + "</td>" +
+                                    "<td>" + value.Name + "</td>" +
+                                    "<td>" + value.Address + "</td>" +
+                                    "<td>" + value.Email + "</td>" +
+                                    "<td>" + "<a href='#' class='btn btn-info' onclick='Revert(" + value.ID + ")'><i class='fa fa-undo fa-lg'>&nbsp;</i>Revert</a>&nbsp;" +
+                                    "<a href='#' class='btn btn-danger' onclick='DeleteUser(" + value.ID + ")'><i class='fa fa-times fa-lg'>&nbsp;</i>Delete</a>" +
+                                    "</td>" +
+                                    "</tr>";
+
+
+                                SetData.append(Data);
+
+                            });
+                        }
+                    }
+                });
+            });
+            $(".navMenu").removeClass("active");
+            $("#manageCustomers").addClass("active");
+        });
+
+
+    </script>
+}
+

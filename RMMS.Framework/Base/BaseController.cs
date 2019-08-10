@@ -1,6 +1,7 @@
 ﻿using RMMS.Data;
 using RMMS.Repo.Account;
 using RMMS.Repo.ManageProfile;
+using RMMS.Repo.ManageUser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,6 +51,26 @@ namespace RMMS.Framework.Base
                 if (_userRequestRepo == null)
                     _userRequestRepo = new UserRequestsRepo();
                 return _userRequestRepo;
+            }
+        }
+        private static CustomerInfoRepo _customerInfoRepo;
+        public static CustomerInfoRepo CustomerInfoRepo
+        {
+            get
+            {
+                if (_customerInfoRepo == null)
+                    _customerInfoRepo = new CustomerInfoRepo();
+                return _customerInfoRepo;
+            }
+        }
+        private static EmployeeInfoRepo _employeeInfoRepo;
+        public static EmployeeInfoRepo EmployeeInfoRepo
+        {
+            get
+            {
+                if (_employeeInfoRepo == null)
+                    _employeeInfoRepo = new EmployeeInfoRepo();
+                return _employeeInfoRepo;
             }
         }
     }
