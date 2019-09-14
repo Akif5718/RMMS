@@ -23,5 +23,7 @@ namespace RMMS.Data
         public DbSet<RiceType> RiceTypes { get; set; }
         public DbSet<ExtraType> ExtraTypes { get; set; }
         public DbSet<ExtraBalanceDetail> ExtraBalanceDetails { get; set; }
+        public DbSet<SortedBalanceDetail> SortedBalanceDetails { get; set; }
+        public DbSet<UnsortedBalanceDetail> UnsortedBalanceDetails { get; set; }
     }
 }

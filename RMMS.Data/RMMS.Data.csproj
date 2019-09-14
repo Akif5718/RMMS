@@ -102,6 +102,10 @@
     <Compile Include="Migrations\201908102329425_Create_Admin_Employee_customer_RiceType_ExtraType_ExtraBalanceDetail.Designer.cs">
       <DependentUpon>201908102329425_Create_Admin_Employee_customer_RiceType_ExtraType_ExtraBalanceDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908110003003_create_SortedBalanceDetail_UnsortedBalanceDetail.cs" />
+    <Compile Include="Migrations\201908110003003_create_SortedBalanceDetail_UnsortedBalanceDetail.Designer.cs">
+      <DependentUpon>201908110003003_create_SortedBalanceDetail_UnsortedBalanceDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="RMMSDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -154,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908102329425_Create_Admin_Employee_customer_RiceType_ExtraType_ExtraBalanceDetail.resx">
       <DependentUpon>201908102329425_Create_Admin_Employee_customer_RiceType_ExtraType_ExtraBalanceDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908110003003_create_SortedBalanceDetail_UnsortedBalanceDetail.resx">
+      <DependentUpon>201908110003003_create_SortedBalanceDetail_UnsortedBalanceDetail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

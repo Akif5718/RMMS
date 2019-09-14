@@ -200,11 +200,83 @@ namespace RMMS.Controllers
 
 
         }
+        [RMMSAuthorize(EnumCollection.UserTypeEnum.Admin)]
+        public ActionResult EditCustomer(int id)
+        {
+
+            var result = CustomerInfoRepo.getCustomerByID(id);
+            if(result.HasError)
+            {
+
+            }
+
+            var model = new CustomerInfoModel() {
+
+                Address = result.Data.UserInfo.Address,
+                Email = result.Data.UserInfo.Email,
+                UserCode = result.Data.UserInfo.UserCode,
+                UserName = result.Data.UserInfo.UserName,
+                Name = result.Data.UserInfo.Name,
+                ID = id,
+                IsActive = result.Data.UserInfo.IsActive,
+                UserTypeID = result.Data.UserInfo.UserTypeID,
+                ExtraBalance = result.Data.ExtraBalance,
+                Rate = result.Data.Rate,
+                SortedBalance = result.Data.SortedBalance,
+                UnSortedBalance = result.Data.UnsortedBalance,
+                Value = result.Data.Value
+            };
+
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult EditCustomer(CustomerInfoModel model)
+        {
+            Entities.UserInfo userInfo = new Entities.UserInfo()
+            {
+                Address = model.Address,
+                Email = model.Email,
+                ID = model.ID,
+                Name = model.Name,
+                UserName = model.UserName
+            };
+            if(model.NewPassword != null && model.ConfirmPassword != null && model.NewPassword == model.ConfirmPassword)
+            {
+                userInfo.Password = model.NewPassword;
+            }
+            else
+            {
+                if ((model.NewPassword == null && model.ConfirmPassword != null)|| (model.NewPassword != null && model.ConfirmPassword == null))
+                {
+                    ViewBag.Error = "Password and Confirm Password is not matched";
+                    return View(model);
+                }
+                
+            }
+            Entities.Customer customer = new Entities.Customer()
+            {
+                C_ID = model.ID,
+                Rate = model.Rate
+            };
+            var result = CustomerInfoRepo.editCustomers(userInfo, customer);
+            if (result.HasError)
+            {
+                ViewBag.Error = result.Message;
+                return View(model);
+            }
+            ViewBag.Success = "Informations have been updated successfully";
+            return View(model);
+        }
+
+
+
+        [HttpPost]
+        public ActionResult RedirectEditCustomer(int id)
+        {
+
+            return JavaScript("window.location = '/ManageUser/EditCustomer/"+id+"'");
+        }
         #endregion
-
-
-
-
 
         #region Employee
         [RMMSAuthorize(EnumCollection.UserTypeEnum.Admin)]
@@ -394,6 +466,76 @@ namespace RMMS.Controllers
             return Json(finalList, JsonRequestBehavior.AllowGet);
 
 
+        }
+        [RMMSAuthorize(EnumCollection.UserTypeEnum.Admin)]
+        public ActionResult EditEmployee(int id)
+        {
+            var result = EmployeeInfoRepo.getEmployeeByID(id);
+            if (result.HasError)
+            {
+
+            }
+
+            var model = new EmployeeInfoModel()
+            {
+
+                Address = result.Data.UserInfo.Address,
+                Email = result.Data.UserInfo.Email,
+                UserCode = result.Data.UserInfo.UserCode,
+                UserName = result.Data.UserInfo.UserName,
+                Name = result.Data.UserInfo.Name,
+                ID = id,
+                IsActive = result.Data.UserInfo.IsActive,
+                UserTypeID = result.Data.UserInfo.UserTypeID,
+                Salary = result.Data.Salary
+            };
+
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult EditEmployee(EmployeeInfoModel model)
+        {
+
+            Entities.UserInfo userInfo = new Entities.UserInfo()
+            {
+                Address = model.Address,
+                Email = model.Email,
+                ID = model.ID,
+                Name = model.Name,
+                UserName = model.UserName
+            };
+            if (model.NewPassword != null && model.ConfirmPassword != null && model.NewPassword == model.ConfirmPassword)
+            {
+                userInfo.Password = model.NewPassword;
+            }
+            else
+            {
+                if ((model.NewPassword == null && model.ConfirmPassword != null) || (model.NewPassword != null && model.ConfirmPassword == null))
+                {
+                    ViewBag.Error = "Password and Confirm Password is not matched";
+                    return View(model);
+                }
+
+            }
+            Entities.Employee employee = new Entities.Employee()
+            {
+                E_ID = model.ID,
+                Salary = model.Salary
+            };
+            var result = EmployeeInfoRepo.editEmployee(userInfo, employee);
+            if (result.HasError)
+            {
+                ViewBag.Error = result.Message;
+                return View(model);
+            }
+            ViewBag.Success = "Informations have been updated successfully";
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult RedirectEditEmployee(int id)
+        {
+
+            return JavaScript("window.location = '/ManageUser/EditEmployee/" + id + "'");
         }
         #endregion
     }

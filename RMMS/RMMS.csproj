@@ -193,6 +193,8 @@
     <Content Include="Views\ManageProfile\UserRequests.cshtml" />
     <Content Include="Views\ManageUser\Customer.cshtml" />
     <Content Include="Views\ManageUser\Employee.cshtml" />
+    <Content Include="Views\ManageUser\EditCustomer.cshtml" />
+    <Content Include="Views\ManageUser\EditEmployee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -78,7 +78,7 @@ else if (!string.IsNullOrEmpty(ViewBag.Error))
                             <td>
                                 @*<button type="submit" class="btn btn-info" value="ChangeStatus"> <i class="fa fa-exchange fa-lg">&nbsp;</i>Change Status</button>*@
 
-                                <a href="#" class="btn btn-info" onclick="changeStatus(@Model[i].ID)"><i class="fa fa-edit fa-lg">&nbsp;</i>Edit</a>
+                                <a href="#" class="btn btn-info" onclick="editCust(@Model[i].ID)"><i class="fa fa-edit fa-lg">&nbsp;</i>Edit</a>
                                 <a href="#" class="btn btn-danger" onclick="Delete(@Model[i].ID)"><i class="fa fa-trash fa-lg">&nbsp;</i>Delete</a>
                             </td>
 
@@ -237,6 +237,17 @@ else if (!string.IsNullOrEmpty(ViewBag.Error))
                     }
                 });
         }
+        var editCust = function (id) {
+
+            $.ajax({
+                type: "POST",
+                url: "/ManageUser/RedirectEditCustomer",
+                data: { id: id },
+                success: function () {
+                }
+            });
+
+        }
                     //var changeStatus = function (id) {
                     //    var type = $('#ddl' + id).val();
                     //    swal({
@@ -284,7 +295,7 @@ else if (!string.IsNullOrEmpty(ViewBag.Error))
                                     "<td>" + value.Name + "</td>" +
                                     "<td>" + value.Address + "</td>" +
                                     "<td>" + value.Email + "</td>" +
-                                    "<td>" + "<a href='#' class='btn btn-info' onclick='changeStatus("+value.ID+")'><i class='fa fa-edit fa-lg'>&nbsp;</i>Edit</a>&nbsp;"+
+                                    "<td>" + "<a href='#' class='btn btn-info' onclick='editCust("+value.ID+")'><i class='fa fa-edit fa-lg'>&nbsp;</i>Edit</a>&nbsp;"+
                                     "<a href='#' class='btn btn-danger' onclick='Delete("+value.ID+")'><i class='fa fa-trash fa-lg'>&nbsp;</i>Delete</a>" +
                                     "</td>" +
                                     "</tr>";

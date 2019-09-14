@@ -1,0 +1,146 @@
+﻿@model RMMS.Model.ManageUser.CustomerInfoModel
+@{
+    ViewBag.Title = "EditCustomer";
+    Layout = "~/Views/Shared/_AfterLayout.cshtml";
+}
+
+<h2>EditCustomer</h2>
+
+
+@using (Html.BeginForm("EditCustomer"))
+{
+    if (!string.IsNullOrEmpty(ViewBag.Error))
+    {
+        <div class="alert alert-dismissible alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Oh snap!</strong><br /> @ViewBag.Error
+        </div>
+    }
+    else if (!string.IsNullOrEmpty(ViewBag.Success))
+    {
+        <div class="alert alert-dismissible alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            @ViewBag.Success
+        </div>
+    }
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 well">
+
+            <fieldset>
+                <legend>Edit</legend>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">User Code</label>
+                    <div>
+                        @Html.TextBoxFor(m => m.UserCode, new { @class = "form-control", @readonly = "readonly", @value = "'" + Model.UserCode + "'" })
+                        @Html.ValidationMessageFor(m => m.UserCode)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">User Name</label>
+                    <div>
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", value = "'" + Model.UserName + "'" })
+                        @Html.ValidationMessageFor(m => m.UserName)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">User FullName</label>
+                    <div>
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", value = "'" + Model.Name + "'" })
+                        @Html.ValidationMessageFor(m => m.Name)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                    <div>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @value = "'" + Model.Email + "'" })
+                        @Html.ValidationMessageFor(m => m.Email)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">Address</label>
+                    <div>
+                        @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @value = "'" + Model.Address + "'" })
+                        @Html.ValidationMessageFor(m => m.Address)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">Rate</label>
+                    <div>
+                        @Html.TextBoxFor(m => m.Rate, new { @class = "form-control", @value = "'" + Model.Rate + "'" })
+                        @Html.ValidationMessageFor(m => m.Rate)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">Sorted Balance</label>
+                    <div>
+                        @Html.TextBoxFor(m => m.SortedBalance, new { @class = "form-control", @readonly = "readonly", @value = "'" + Model.SortedBalance + "'" })
+                        @Html.ValidationMessageFor(m => m.SortedBalance)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">UnSorted Balance</label>
+                    <div>
+                        @Html.TextBoxFor(m => m.UnSortedBalance, new { @class = "form-control", @readonly = "readonly", @value = "'" + Model.UnSortedBalance + "'" })
+                        @Html.ValidationMessageFor(m => m.UnSortedBalance)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">Value</label>
+                    <div>
+                        @Html.TextBoxFor(m => m.Value, new { @class = "form-control", @readonly = "readonly", @value = "'" + Model.Value + "'" })
+                        @Html.ValidationMessageFor(m => m.Value)
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">Change Password?</label>
+                    <div>
+                        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Change Password</button>
+                    </div>
+                </div>
+                <div id="demo" class="collapse">
+                    <div class="form-group">
+                        <label for="inputPassword" class="col-lg-2 control-label">New Password</label>
+                        <div>
+                            @Html.PasswordFor(m => m.NewPassword, new { @class = "form-control", @value = "", @placeholder = "Enter new password" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword" class="col-lg-2 control-label">Confirm password</label>
+                        <div>
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @value = "", @placeholder = "Enter confirm password" })
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+                <div class="form-group">
+                    <div class="col-lg-offset-2">
+                        <button type="reset" class="btn btn-default">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </fieldset>
+
+
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+}
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $(".navMenu").removeClass("active");
+            $("#manageCustomers").addClass("active");
+        });
+    </script>
+
+}

@@ -75,14 +75,28 @@ namespace RMMS.Repo.Account
                     }
                 }
                 
-
-
                 if (!IsValid(objectToSave, result))
                 {
                     DetachAllEntities();
                     return result;
                 }
-                    
+                DbContext.SaveChanges();
+                var ID = DbContext.UserInfos.FirstOrDefault(u => u.UserName.Equals(userInfo.UserName)).ID;
+                if (userInfo.UserTypeID == (int)EnumCollection.UserTypeEnum.Admin)
+                {
+                    var adm = new Admin() { A_ID = ID, ExtraBalance = 0};
+                    DbContext.Admins.Add(adm);
+                }
+                else if (userInfo.UserTypeID == (int)EnumCollection.UserTypeEnum.Employee)
+                {
+                    var emp = new Employee() { E_ID = ID, Salary = 0 };
+                    DbContext.Employees.Add(emp);
+                }
+                else if (userInfo.UserTypeID == (int)EnumCollection.UserTypeEnum.Customer)
+                {
+                    var cust = new Customer() { C_ID = ID, SortedBalance = 0, UnsortedBalance = 0, ExtraBalance = 0, Rate = 0, Value = 0 };
+                    DbContext.Customers.Add(cust);
+                }
                 DbContext.SaveChanges();
                 result.Data = objectToSave;
 
